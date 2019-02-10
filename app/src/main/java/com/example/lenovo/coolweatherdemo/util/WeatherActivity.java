@@ -1,5 +1,6 @@
 package com.example.lenovo.coolweatherdemo.util;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -23,6 +24,7 @@ import com.bumptech.glide.Glide;
 import com.example.lenovo.coolweatherdemo.R;
 import com.example.lenovo.coolweatherdemo.gson.Forecast;
 import com.example.lenovo.coolweatherdemo.gson.Weather;
+import com.example.lenovo.coolweatherdemo.service.AutoUpdateService;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.Request;
@@ -212,10 +214,7 @@ public class WeatherActivity extends AppCompatActivity {
         String updateTime = weather.basic.update.updateTime.split(" ")[1];
         String degree = weather.now.temperature + "℃";
         String weatherInfo = weather.now.more.info;
-
-        Log.d(TAG, "showWeatherInfo: ---------------------" + cityName + "--------titleCity.setText=");
         titleCity.setText(cityName.toString());
-        Log.d(TAG, "showWeatherInfo: =========================================" + titleCity.getText());
         titleUpdateTime.setText(updateTime);
         degreeText.setText(degree);
         weatherInfoText.setText(weatherInfo);
@@ -243,5 +242,8 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 }
