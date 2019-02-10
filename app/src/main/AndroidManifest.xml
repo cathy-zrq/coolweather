@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.lenovo.coolweatherdemo">
+    <!--允许连接网络-->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!--访问设备状态-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--访问WIFI状态-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--访问网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!--访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name="org.litepal.LitePalApplication"
@@ -17,6 +26,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".util.WeatherActivity">
+
         </activity>
     </application>
 
